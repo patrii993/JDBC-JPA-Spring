@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th= http://www.thymeleaf.org>
+<head>
+<meta charset="UTF-8">
+<title>Reserva Fecha</title>
+</head>
+<body>
+<form method="post" th:action="@{/modificar}" th:object="${concierto}">
+<input type="hidden" th:value="${concierto.idconcierto}" th:field="${concierto.idconcierto}">
+<input type="hidden" th:field="${concierto.fecha}" th:value="${fecha}">
+<label>Grupo</label>
+<input type="text" name="grupo">
+<label>Hora</label>
+<input type="time" name="hora">
+<label>Precio anticipado</label>
+<input type="number" name="precioanticipado">
+<label>Precio taquilla</label>
+<input type="number" name="preciotaquilla">
+<input type="hidden" th:value="${concierto.sala.idsala}" th:field="${concierto.sala}">
+<input type="submit" value="Enviar">
+
+</form>
+</body>
+</html>

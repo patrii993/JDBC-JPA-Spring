@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th= http://www.thymeleaf.org>
+<head>
+<meta charset="UTF-8">
+<title>Elige una sala</title>
+</head>
+<body>
+<form method=post th:action="@{/muestraconciertos}">
+<label>Sala:</label>
+<select name="idsala" >
+<option th:each="sala: ${salas}" th:value="${sala.idsala}" th:text="${sala.nombre}"></option>
+</select>
+<input type="submit" value="Enviar">
+</form>
+</body>
+</html>

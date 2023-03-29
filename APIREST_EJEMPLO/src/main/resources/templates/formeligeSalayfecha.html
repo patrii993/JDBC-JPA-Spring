@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th = http://www.thymeleaf.org>
+<head>
+<meta charset="UTF-8">
+<title>Introduce los datos</title>
+</head>
+<body>
+<form method="post" th:action="@{/muestraBusquedaConciertos}">
+<label>Desde</label>
+<input type="date" name="from">
+<label>Hasta</label>
+<input type="date" name="to">
+<label>Sala:</label>
+<select name="idsala" >
+<option th:each="sala: ${salas}" th:value="${sala.idsala}" th:text="${sala.nombre}"></option>
+</select>
+<select name="grupo">
+<option th:each="concierto: ${conciertos}" th:value="${concierto.grupo}" th:text="${concierto.grupo}"></option>
+</select>
+<input type="submit" value="Enviar">
+</form>
+</body>
+</html>

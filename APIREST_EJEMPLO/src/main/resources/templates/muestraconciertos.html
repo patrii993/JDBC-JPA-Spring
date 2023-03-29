@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thyemleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Todos los conciertos</title>
+</head>
+<body>
+<p>Todos los conciertos de la sala <span th:text="${sala.nombre}"></span>
+<table>
+	<tr>
+		<th style="border: 2px #000000 solid">Grupo</th>
+		<th style="border: 2px #000000 solid">Hora</th>
+		<th style="border: 2px #000000 solid">Fecha</th>
+		<th style="border: 2px #000000 solid">Plazas</th>
+		<th style="border: 2px #000000 solid">Precio anticipado</th>
+		<th style="border: 2px #000000 solid">Precio taquilla</th>
+	</tr>
+	<tr th:each="concierto: ${conciertos}">
+		<td style="border: 2px #000000 solid" th:text="${concierto.grupo}"></td>	
+		<td style="border: 2px #000000 solid" th:text="${concierto.hora}"></td>
+		<td style="border: 2px #000000 solid" th:text="${concierto.fecha}"></td>
+		<td style="border: 2px #000000 solid" th:text="${concierto.plazasdisponibles}"></td>	
+		<td style="border: 2px #000000 solid" th:text="${concierto.precioanticipado}"></td>
+		<td style="border: 2px #000000 solid" th:text="${concierto.preciotaquilla}"></td>
+	</tr>
+</table>
+<a th:href="@{/index}">Volver</a>
+</body>
+</html>
