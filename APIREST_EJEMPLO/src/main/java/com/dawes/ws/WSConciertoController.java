@@ -29,7 +29,8 @@ public class WSConciertoController {
 	ServicioConcierto sc;
 	@Autowired
 	ServicioSala ss;
-
+	
+	//Mostrar conciertos
 	@GetMapping("/conciertos")
 	public ResponseEntity<?> consultaConciertos() {
 		List<ConciertoDTO> conciertoDTO = new ArrayList<>();
@@ -50,7 +51,7 @@ public class WSConciertoController {
 		return new ResponseEntity<>(conciertoDTO, HttpStatus.OK);
 	}
 
-//buscar por id
+	//Buscar concierto por id
 	@GetMapping("/conciertos/{idconcierto}")
 	public ResponseEntity<?> consultaId(@PathVariable Integer idconcierto) {
 		ConciertoDTO c = new ConciertoDTO();
@@ -71,7 +72,7 @@ public class WSConciertoController {
 		return new ResponseEntity<>(c, HttpStatus.OK);
 	}
 
-	// buscar por fecha y grupo
+	//Buscar conciertos por fecha y grupo
 	@GetMapping("/conciertos/{grupo}/{fecha}")
 	public ResponseEntity<?> consultaFechaGrupo(@PathVariable String grupo, @PathVariable LocalDate fecha) {
 		List<ConciertoDTO> conciertoDTO = new ArrayList<>();
@@ -99,7 +100,7 @@ public class WSConciertoController {
 	 * 
 	 * }
 	 */
-	// Persiste un concierto
+	//Crea un concierto
 	@PostMapping("/concierto")
 	public ResponseEntity<?> creaConcierto(@RequestBody ConciertoVO concierto) {
 		ConciertoVO c;
@@ -112,7 +113,7 @@ public class WSConciertoController {
 
 	}
 
-	// Modifica el concierto buscado en el fecha y grupo.
+	//Modifica el concierto buscado en el fecha y grupo.
 	@PutMapping("/concierto/{grupo}/{fecha}")
 	public ResponseEntity<?> modificaConciertoFechaGrupo(@RequestBody ConciertoVO concierto, @PathVariable String grupo,
 			@PathVariable LocalDate fecha) {
@@ -138,7 +139,7 @@ public class WSConciertoController {
 		return new ResponseEntity<>(modificado, HttpStatus.OK);
 	}
 
-	// Eliminar los conciertos por id
+	//Eliminar los conciertos por id
 	@DeleteMapping("/concierto/{idconcierto}")
 	public ResponseEntity<?> eliminaConciertoId(@PathVariable Integer idconcierto) {
 		try {
@@ -149,8 +150,7 @@ public class WSConciertoController {
 		return new ResponseEntity<>(idconcierto, HttpStatus.OK);
 	}
 
-	// buscar una sala
-
+	//Mostrar salas
 	@GetMapping("/salas")
 	public ResponseEntity<?> consultaSalas() {
 		List<SalaDTO> salaDTO = new ArrayList<>();
@@ -173,7 +173,7 @@ public class WSConciertoController {
 		return new ResponseEntity<>(salaDTO, HttpStatus.OK);
 	}
 
-	// buscar una sala por nombre
+	// Buscar una sala por nombre
 	@GetMapping("/salas/{nombre}")
 	public ResponseEntity<?> consultaConciertosSala(@PathVariable String nombre) {
 		List<SalaDTO> salaDTO = new ArrayList<>();
@@ -198,8 +198,7 @@ public class WSConciertoController {
 		return new ResponseEntity<>(salaDTO, HttpStatus.OK);
 	}
 
-	// modidifica un concierto
-
+	//Modidifica un concierto
 	@PutMapping("/sala/{nombre}/{grupo}")
 	public ResponseEntity<?> modificaSalaConcierto(@RequestBody ConciertoVO concierto, @PathVariable String nombre,
 			@PathVariable String grupo) {
@@ -224,8 +223,7 @@ public class WSConciertoController {
 			return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	//Inserta sala
-	// Persiste un concierto
+	//Crea una sala
 	@PostMapping("/sala")
 	public ResponseEntity<?> creaSala(@RequestBody SalaVO sala) {
 		SalaVO s;
